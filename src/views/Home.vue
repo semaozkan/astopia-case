@@ -1,6 +1,7 @@
 <script setup>
 import Form from "../components/Form.vue";
 import FormInfo from "../components/FormInfo.vue";
+import BirthChartLayers from "../components/BirthChartLayers.vue";
 </script>
 
 <template>
@@ -22,6 +23,8 @@ import FormInfo from "../components/FormInfo.vue";
             <FormInfo />
         </div>
 
+        <BirthChartLayers />
+
     </div>
 
 </template>
@@ -29,8 +32,12 @@ import FormInfo from "../components/FormInfo.vue";
 <style scoped>
 .home-container {
     width: 100%;
-    height: 200vh;
+    /* height: 200vh; */
     padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .breadcrumb {

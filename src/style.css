@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(21, 27, 59, 0.85),
+      rgba(30, 40, 89, 0.85),
+      rgba(15, 21, 47, 0.85)
+    ),
+    url("./assets/background.png");
+  background-repeat: no-repeat;
+  /* background-size: cover;
+  background-position: center;
+  background-attachment: fixed; */
+  font-family: "Playfair Display", serif;
+  color: white;
+  /* filter: brightness(1.4); */
+}

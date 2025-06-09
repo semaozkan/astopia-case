@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-                    <div class="checkbox-row">
+                    <div class="checkbox-row box">
                         <input type="checkbox" id="assumeTime" />
                         <label for="assumeTime">I don’t know my time of birth assume 12:00 PM</label>
                     </div>
@@ -61,7 +61,7 @@
                 <button type="submit" class="submit-btn">Create Your Birth Chart</button>
 
                 <div class="checkbox-row">
-                    <input type="checkbox" id="consent" class="box" />
+                    <input type="checkbox" id="consent" />
                     <label for="consent" class="checkbox-row-text">
                         I have read and accept the User Agreement. I consent to the use of my e-mail address for
                         marketing
@@ -149,16 +149,59 @@ select {
 
 .checkbox-row {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    align-items: flex-start;
+    gap: 4px;
     font-size: 12px;
-    flex-wrap: wrap;
 }
 
 .checkbox-row label {
+    display: flex;
+    gap: 8px;
     font-size: 10px;
     font-weight: 500;
     line-height: 20px;
+    position: relative;
+}
+
+.checkbox-row input[type="checkbox"] {
+    display: none;
+}
+
+/* kutucuk */
+.checkbox-row label::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 1.5px;
+    background-color: #FBE1C4;
+    border: 1px solid #ccc;
+    margin-top: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: -20px;
+    box-sizing: border-box;
+}
+
+/* tik işareti */
+.checkbox-row input[type="checkbox"]:checked+label::before {
+    content: "✓";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00202F;
+    font-size: 10px;
+    text-align: center;
+    line-height: 14px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: -20px;
+}
+
+.box {
+    margin-left: 20px;
 }
 
 .form-footer {
@@ -185,12 +228,8 @@ select {
     cursor: pointer;
 }
 
-.box {
-    margin-bottom: 20px;
-}
-
 .checkbox-row-text {
-    max-width: 500px;
+    max-width: 400px;
     font-size: 12px;
     font-weight: 500;
     line-height: 20px;

@@ -1,5 +1,6 @@
 <script setup>
-
+import Form from "../components/Form.vue";
+import FormInfo from "../components/FormInfo.vue";
 </script>
 
 <template>
@@ -15,6 +16,12 @@
             <p>Ever feel like the first impression you give isn’t the full story?</p>
             <p>Or wonder why you instinctively react a certain way in new situations?</p>
         </div>
+
+        <div class="form-section">
+            <Form />
+            <FormInfo />
+        </div>
+
     </div>
 
 </template>
@@ -23,6 +30,7 @@
 .home-container {
     width: 100%;
     height: 200vh;
+    padding: 0 20px;
 }
 
 .breadcrumb {
@@ -30,7 +38,7 @@
     align-items: center;
     gap: 10px;
     margin: 50px 0;
-    padding: 0 50px;
+    padding: 0 30px;
 }
 
 .breadcrumb-label {
@@ -63,5 +71,26 @@
     line-height: 100%;
     color: #FFFFFF;
     text-align: center;
+}
+
+.form-section {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        padding: 0 40px;
+    }
+
+    .breadcrumb {
+        padding: 0 4px;
+    }
+
+    .form-section {
+        flex-direction: column;
+    }
+
 }
 </style>

@@ -8,7 +8,7 @@ import BirthChartLayers from "../components/BirthChartLayers.vue";
     <div class="home-container">
 
         <div class="breadcrumb">
-            <img src="../../public/home-2.png" alt="">
+            <img src="../assets/home-2.png" alt="">
             <span class="breadcrumb-label"> > Rising Sign</span>
         </div>
 
@@ -37,10 +37,11 @@ import BirthChartLayers from "../components/BirthChartLayers.vue";
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .breadcrumb {
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 10px;

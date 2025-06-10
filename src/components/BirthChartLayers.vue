@@ -99,4 +99,10 @@ const cards = [
     gap: 44px;
     margin-top: 50px;
 }
+
+@media (max-width: 768px) {
+    .chart-layers {
+        padding: 0 40px;
+    }
+}
 </style>

@@ -21,7 +21,7 @@
     </nav>
 
     <!-- mobile navbar -->
-    <nav v-else>
+    <nav class="nav" v-else>
         <div class="navbar-mobile">
             <img class="logo" src="../assets/logo.png" alt="logo" />
             <AlignJustify v-if="!isMobileMenuOpen" class="menu-icon" @click="isMobileMenuOpen = !isMobileMenuOpen" />
@@ -105,6 +105,10 @@ onUnmounted(() => {
     font-weight: 400;
 }
 
+.navbar-menu li {
+    cursor: pointer;
+}
+
 .navbar-right button,
 .sign-up-button {
     width: 151px;
@@ -128,6 +132,10 @@ onUnmounted(() => {
     justify-content: center;
 
     box-shadow: inset 4px 4px 4px rgba(249, 251, 252, 0.4);
+}
+
+.nav {
+    width: 100%;
 }
 
 .navbar-mobile {

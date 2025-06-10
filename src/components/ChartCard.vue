@@ -26,7 +26,7 @@ defineProps({
     border: 0.75px solid #FBE1C4;
     border-radius: 8px;
     padding: 15px 4px;
-    width: 320px;
+    max-width: 320px;
     min-height: 331px;
 }
 
@@ -51,5 +51,17 @@ defineProps({
     font-size: 13.56px;
     line-height: 20px;
     padding: 0 12px;
+}
+
+@media (max-width: 768px) {
+    .card h3 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 6px;
+    }
+
+    .card p {
+        font-size: 12px;
+    }
 }
 </style>

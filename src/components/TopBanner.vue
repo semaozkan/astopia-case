@@ -7,7 +7,7 @@
 
 <style scoped>
 .top-banner {
-  width: 100%;
+  width: 100vw;
   height: 51px;
   display: flex;
   align-items: center;

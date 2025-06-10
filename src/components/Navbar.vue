@@ -2,7 +2,7 @@
     <!-- desktop navbar -->
     <nav class="navbar" v-if="windowWidth > 768">
         <div class="navbar-left">
-            <img class="logo" src="../../public/logo.png" alt="logo" />
+            <img class="logo" src="../assets/logo.png" alt="logo" />
             <AlignJustify class="menu-icon" @click="isMobileMenuOpen = !isMobileMenuOpen" />
         </div>
 
@@ -23,7 +23,7 @@
     <!-- mobile navbar -->
     <nav v-else>
         <div class="navbar-mobile">
-            <img class="logo" src="../../public/logo.png" alt="logo" />
+            <img class="logo" src="../assets/logo.png" alt="logo" />
             <AlignJustify v-if="!isMobileMenuOpen" class="menu-icon" @click="isMobileMenuOpen = !isMobileMenuOpen" />
             <X class="menu-icon" v-else @click="isMobileMenuOpen = !isMobileMenuOpen" />
         </div>

@@ -37,27 +37,32 @@
                     </div>
 
                     <div class="store-buttons">
-                        <button class="button">
-                            <div class="img-container">
-                                <img src="../assets/app_store.png" alt="app_store">
-                            </div>
+                        <a href="https://app.adjust.com/16j4icku">
+                            <button class="button">
+                                <div class="img-container">
+                                    <img src="../assets/app_store.png" alt="app_store">
+                                </div>
 
-                            <div class="button-info">
-                                <span class="info">Available on the</span>
-                                <span class="app">App Store</span>
-                            </div>
-                        </button>
+                                <div class="button-info">
+                                    <span class="info">Available on the</span>
+                                    <span class="app">App Store</span>
+                                </div>
+                            </button>
+                        </a>
 
-                        <button class="button">
-                            <div class="img-container">
-                                <img src="../assets/google_play.png" alt="google_play">
-                            </div>
+                        <a href="https://app.adjust.com/16j4icku">
+                            <button class="button">
+                                <div class="img-container">
+                                    <img src="../assets/google_play.png" alt="google_play">
+                                </div>
 
-                            <div class="button-info">
-                                <span class="info">GET IT ON</span>
-                                <span class="app">Google Play</span>
-                            </div>
-                        </button>
+                                <div class="button-info">
+                                    <span class="info">GET IT ON</span>
+                                    <span class="app">Google Play</span>
+                                </div>
+                            </button>
+                        </a>
+
 
 
                     </div>
@@ -174,6 +179,7 @@
     background-color: #000000;
     border: none;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .img-container {

@@ -1,4 +1,4 @@
-# 🌌 Astopia
+# 🌌 Astopia Case
 
 Astopia is a modern Vue.js-based web application that allows users to explore their birth charts visually and interactively. The app presents the layered structure of astrological signs through a stunning design, prioritizing user experience. With a cohesive dark theme, circular cards, scrollable components, and API integrations, Astopia offers both an aesthetic and functional platform for astrology enthusiasts.
 

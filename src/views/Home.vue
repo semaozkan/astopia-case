@@ -2,6 +2,7 @@
 import Form from "../components/Form.vue";
 import FormInfo from "../components/FormInfo.vue";
 import BirthChartLayers from "../components/BirthChartLayers.vue";
+import CoffeeCarousel from "../components/CoffeeCarousel.vue";
 </script>
 
 <template>
@@ -24,6 +25,8 @@ import BirthChartLayers from "../components/BirthChartLayers.vue";
         </div>
 
         <BirthChartLayers />
+
+        <CoffeeCarousel />
 
     </div>
 

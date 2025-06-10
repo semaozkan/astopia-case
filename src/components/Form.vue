@@ -60,7 +60,7 @@
             <div class="form-footer">
                 <button type="submit" class="submit-btn">Create Your Birth Chart</button>
 
-                <div class="checkbox-row">
+                <div class="checkbox-row footer-box">
                     <input type="checkbox" id="consent" />
                     <label for="consent" class="checkbox-row-text">
                         I have read and accept the User Agreement. I consent to the use of my e-mail address for
@@ -167,7 +167,6 @@ select {
     display: none;
 }
 
-/* kutucuk */
 .checkbox-row label::before {
     content: "";
     display: inline-block;
@@ -184,7 +183,6 @@ select {
     box-sizing: border-box;
 }
 
-/* tik işareti */
 .checkbox-row input[type="checkbox"]:checked+label::before {
     content: "✓";
     display: flex;
@@ -226,6 +224,10 @@ select {
         0px 2px 2px rgba(0, 0, 0, 0.25),
         inset 2px 2px 2px rgba(249, 251, 252, 0.4);
     cursor: pointer;
+}
+
+.footer-box {
+    padding-left: 24px;
 }
 
 .checkbox-row-text {

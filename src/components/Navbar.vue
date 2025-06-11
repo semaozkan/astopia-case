@@ -42,7 +42,7 @@
 
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { AlignJustify, X } from 'lucide-vue-next'
 
 const isMobileMenuOpen = ref(false)
@@ -58,6 +58,10 @@ onMounted(() => {
 
 onUnmounted(() => {
     window.removeEventListener('resize', updateWidth)
+})
+
+watch(isMobileMenuOpen, (isOpen) => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto'
 })
 </script>
 

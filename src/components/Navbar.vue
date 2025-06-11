@@ -24,8 +24,7 @@
     <nav class="nav" v-else>
         <div class="navbar-mobile">
             <img class="logo" src="../assets/logo.png" alt="logo" />
-            <AlignJustify v-if="!isMobileMenuOpen" class="menu-icon" @click="isMobileMenuOpen = !isMobileMenuOpen" />
-            <X class="menu-icon" v-else @click="isMobileMenuOpen = !isMobileMenuOpen" />
+            <AlignJustify class="menu-icon" @click="isMobileMenuOpen = !isMobileMenuOpen" />
         </div>
 
         <div v-if="isMobileMenuOpen" class="navbar-mobile-menu">
@@ -36,6 +35,8 @@
                 <li>Topics</li>
             </ul>
             <button class="sign-up-button">Sign Up</button>
+
+            <X class="menu-close-icon" @click="isMobileMenuOpen = !isMobileMenuOpen" />
         </div>
     </nav>
 </template>
@@ -62,6 +63,7 @@ onUnmounted(() => {
 
 watch(isMobileMenuOpen, (isOpen) => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto'
+    document.documentElement.style.overflow = isOpen ? 'hidden' : 'auto'
 })
 </script>
 
@@ -90,10 +92,19 @@ watch(isMobileMenuOpen, (isOpen) => {
 }
 
 .menu-icon {
-    display: none;
     cursor: pointer;
     width: 28px;
     height: 28px;
+    color: white;
+}
+
+.menu-close-icon {
+    position: absolute;
+    top: 36px;
+    right: 36px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
     color: white;
 }
 
@@ -152,19 +163,16 @@ watch(isMobileMenuOpen, (isOpen) => {
 
 .navbar-mobile-menu {
     position: fixed;
-    top: 101px;
+    top: 0;
     left: 0;
     z-index: 999;
     width: 100%;
-    overflow-y: auto;
-    height: calc(100vh - 101px);
+    height: 100vh;
     background-color: rgba(21, 27, 59, 1);
     display: flex;
     gap: 20px;
     flex-direction: column;
-    margin-top: 20px;
-    padding: 48px;
-
+    padding: 96px 48px 48px 48px;
 }
 
 .navbar-mobile-menu ul {

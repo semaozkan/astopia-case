@@ -62,6 +62,7 @@ onUnmounted(() => {
 
 watch(isMobileMenuOpen, (isOpen) => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto'
+    document.documentElement.style.overflow = isOpen ? 'hidden' : 'auto'
 })
 </script>
 

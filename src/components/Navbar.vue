@@ -62,7 +62,6 @@ onUnmounted(() => {
 
 watch(isMobileMenuOpen, (isOpen) => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto'
-    document.documentElement.style.overflow = isOpen ? 'hidden' : 'auto'
 })
 </script>
 
@@ -152,7 +151,12 @@ watch(isMobileMenuOpen, (isOpen) => {
 }
 
 .navbar-mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
     width: 100%;
+    overflow-y: auto;
     height: calc(100vh - 101px);
     background-color: rgba(21, 27, 59, 1);
     display: flex;

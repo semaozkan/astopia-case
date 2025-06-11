@@ -6,19 +6,24 @@
                     <label>Full Name</label>
                     <input type="text" placeholder="Full Name" />
                 </div>
+
                 <div class="form-row">
                     <label>Gender</label>
                     <select>
                         <option class="option" disabled selected>Choose</option>
-                        <option class="option" value="female">Female</option>
-                        <option class="option" value="male">Male</option>
-                        <option class="option" value="other">Other</option>
+                        <option class="option" value="female">Kadın</option>
+                        <option class="option" value="male">Erkek</option>
+                        <option class="option" value="other">Diğer</option>
                     </select>
                 </div>
+
                 <div class="form-row">
                     <label>City</label>
-                    <select>
-                        <option disabled selected>Choose</option>
+                    <select v-model="selectedCity" id="city">
+                        <option disabled value="">Choose</option>
+                        <option v-for="city in cities" :key="city.id" :value="city.name" class="option">
+                            {{ city.name }}
+                        </option>
                     </select>
                 </div>
 
@@ -26,23 +31,30 @@
                     <label>Email</label>
                     <input type="email" placeholder="abc@gmail.com" />
                 </div>
-                <div class="form-row">
-                    <label>Date of Birth</label>
-                    <input type="text" placeholder="Select" v-model="birthDate" @focus="e => e.target.type = 'date'"
-                        @blur="e => { if (!birthDate) e.target.type = 'text' }" />
+
+                <div class="form-row custom-date-input">
+                    <label for="date">Date of Birth</label>
+                    <div class="date-display" @click="openDatePicker">
+                        <span>{{ birthDate || 'Select' }}</span>
+                        <img src="../assets/calendar-2.png" alt="calendar" class="calendar-icon" />
+                    </div>
+
+                    <input type="date" ref="realDateInput" v-model="birthDate" @change="updateDisplay"
+                        class="hidden-date-input" />
                 </div>
+
 
                 <div class="time-of-birth">
                     <div class="form-row">
                         <label>Time of Birth</label>
                         <div class="time-group">
-                            <select>
-                                <option value="" disabled selected hidden></option>
+                            <select v-model="birthHour">
+                                <option :value="''" disabled selected hidden></option>
                                 <option v-for="hour in 24" :key="hour - 1" class="option">
                                     {{ hour - 1 < 10 ? '0' + (hour - 1) : hour - 1 }} </option>
                             </select>
                             :
-                            <select>
+                            <select v-model="birthMinute">
                                 <option value="" disabled selected hidden></option>
                                 <option v-for="hour in 60" :key="hour - 1" class="option">
                                     {{ hour - 1 < 10 ? '0' + (hour - 1) : hour - 1 }} </option>
@@ -51,7 +63,7 @@
                     </div>
 
                     <div class="checkbox-row box">
-                        <input type="checkbox" id="assumeTime" />
+                        <input type="checkbox" id="assumeTime" v-model="assumeTime" />
                         <label for="assumeTime">I don’t know my time of birth assume 12:00 PM</label>
                     </div>
                 </div>
@@ -75,7 +87,48 @@
     </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, watch, onMounted } from 'vue'
+
+const cities = ref([])
+const selectedCity = ref('')
+
+const birthDate = ref('')
+const realDateInput = ref(null)
+const birthHour = ref(null)
+const birthMinute = ref(null)
+const assumeTime = ref(false)
+
+
+
+function openDatePicker() {
+    realDateInput.value.click()
+}
+
+function updateDisplay(event) {
+    birthDate.value = event.target.value
+}
+
+onMounted(async () => {
+    const res = await fetch('/locations.json')
+    const data = await res.json()
+    cities.value = data
+})
+
+watch(assumeTime, (newVal) => {
+    if (newVal) {
+        birthHour.value = 12
+        birthMinute.value = '00'
+    } else {
+        birthHour.value = ''
+        birthMinute.value = ''
+    }
+})
+
+watch([birthHour, birthMinute], () => {
+    console.log('Hour:', birthHour.value, 'Minute:', birthMinute.value)
+})
+</script>
 
 <style scoped>
 .rising-form {
@@ -128,13 +181,54 @@
     box-sizing: border-box;
 }
 
+.form-row select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('../assets/arrow-down.png');
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 24px 24px;
+    cursor: pointer;
+}
+
 .form-row ::placeholder,
 select {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.option {
-    color: black;
+.custom-date-input {
+    position: relative;
+}
+
+.date-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 16px;
+    box-shadow: 0px 0px 5px rgba(16, 24, 40, 0.25);
+}
+
+.date-display span {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.calendar-icon {
+    width: 23px;
+    height: 23px;
+}
+
+.hidden-date-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
 }
 
 .time-group {
@@ -145,6 +239,10 @@ select {
 
 .time-group select {
     flex: 1;
+}
+
+.option {
+    color: black;
 }
 
 .checkbox-row {
@@ -163,10 +261,6 @@ select {
     position: relative;
 }
 
-.checkbox-row input[type="checkbox"] {
-    display: none;
-}
-
 .checkbox-row label::before {
     content: "";
     display: inline-block;
@@ -183,7 +277,11 @@ select {
     box-sizing: border-box;
 }
 
-.checkbox-row input[type="checkbox"]:checked+label::before {
+.checkbox-row input {
+    display: none;
+}
+
+.checkbox-row input:checked+label::before {
     content: "✓";
     display: flex;
     align-items: center;

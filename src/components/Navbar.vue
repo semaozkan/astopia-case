@@ -3,7 +3,6 @@
     <nav class="navbar" v-if="windowWidth > 768">
         <div class="navbar-left">
             <img class="logo" src="../assets/logo.png" alt="logo" />
-            <AlignJustify class="menu-icon" @click="isMobileMenuOpen = !isMobileMenuOpen" />
         </div>
 
         <div v-if="isMobileMenuOpen || windowWidth > 768" class="navbar-center">
